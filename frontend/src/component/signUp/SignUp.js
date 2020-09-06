@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Cookie from "universal-cookie";
 import {
   Box,
   Container,
@@ -8,6 +8,7 @@ import {
   CircularProgress,
   Button,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import { indigo } from "@material-ui/core/colors";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -18,6 +19,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import firebase from "firebase";
 import "firebase/auth";
+import { doctorProfile, patientProfile } from "../../api";
+import Cookies from "universal-cookie";
 //57b846
 const GreenRadio = withStyles({
   root: {
@@ -29,6 +32,8 @@ const GreenRadio = withStyles({
   checked: {},
 })((props) => <Radio color="default" {...props} />);
 const SignUp = () => {
+  const cookies = new Cookies();
+  let history = new useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
@@ -48,15 +53,39 @@ const SignUp = () => {
     setType(e.target.value);
   };
   const signup = (props) => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(function (data) {
-        console.log(data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (
+      email === "" ||
+      password === "" ||
+      conformPassword === "" ||
+      type === ""
+    ) {
+      alert("Please enter all credential");
+    } else if (password !== conformPassword) {
+      alert("please Enter Valid Password ");
+    } else {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(function (data) {
+          console.log(data.user.uid);
+          (async () => {
+            if (type === "Doctor") {
+              await doctorProfile(data.user.uid);
+            }
+            if (type === "Patient") {
+              //await patientProfile(data.user.uid);
+              cookies.set("uid", data.user.uid, { path: "/" });
+              cookies.set("detalis", true, { path: "/" });
+
+              history.push("/patienthome");
+            }
+          })();
+        })
+        .catch(function (error) {
+          console.log(error);
+          alert(error.message);
+        });
+    }
   };
   return (
     <Container maxWidth="xs">
