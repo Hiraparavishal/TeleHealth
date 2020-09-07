@@ -10,3 +10,30 @@ export async function patientProfile(uid) {
     uid: uid,
   });
 }
+export async function patientDetails(
+  uid,
+  fullname,
+  mobileno,
+  bloodgroup,
+  birthdate,
+  sex,
+  age,
+  address,
+  city,
+  state,
+  zip
+) {
+  return await axios.post("/patientdetails", {
+    uid: uid,
+    fullname: fullname,
+    mobileno: mobileno,
+    bloodgroup: bloodgroup,
+    birthdate: birthdate,
+    sex: sex,
+    age: age,
+    address: address,
+    city: city,
+    state: state,
+    zip: zip,
+  });
+}

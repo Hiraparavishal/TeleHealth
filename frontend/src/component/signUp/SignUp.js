@@ -73,11 +73,11 @@ const SignUp = () => {
               await doctorProfile(data.user.uid);
             }
             if (type === "Patient") {
-              //await patientProfile(data.user.uid);
+              await patientProfile(data.user.uid);
               cookies.set("uid", data.user.uid, { path: "/" });
               cookies.set("detalis", true, { path: "/" });
 
-              history.push("/patienthome");
+              history.push("/form1");
             }
           })();
         })
