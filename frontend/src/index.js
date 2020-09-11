@@ -7,6 +7,7 @@ import Signup from "./component/signUp/SignUp";
 import PatientHome from "./component/Patients/PatientHome";
 import PatientNav from "./component/Patients/PatientNav";
 import DetailsForm from "./component/Patients/DetailsForm";
+import Grid from "../src/component/Patients/grid";
 
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -14,9 +15,11 @@ import "firebase";
 import "../../frontend/src/firebase";
 
 ReactDOM.render(
+  // <Grid></Grid>,
   // <PatientHome></PatientHome>,
   // <PatientNav></PatientNav>,
   // <Home></Home>,
+  // <grid></grid>,
   <Router>
     <Switch>
       <Route path="/" exact>
