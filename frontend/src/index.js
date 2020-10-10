@@ -14,6 +14,7 @@ import ent from "./component/Patients/FindDoctor/ENT";
 import gynaecologist from "./component/Patients/FindDoctor/Gynaecologist";
 import orthopedic from "./component/Patients/FindDoctor/Orthopedic";
 import sexologist from "./component/Patients/FindDoctor/Sexologist";
+import Form from "./component/Patients/DetailsForm";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "firebase";
@@ -26,6 +27,7 @@ ReactDOM.render(
         <h1>Welcome to TeleHelth</h1>
       </Route>
       <Route path="/signup" exact component={Signup}></Route>
+      <Route path="/form" exact component={Form}></Route>
       <Route path="/login" exact component={Login}></Route>
       <Route path="/patienthome" exact component={PatientHome}></Route>
       <Route path="/detailsform" exact component={DetailsForm}></Route>

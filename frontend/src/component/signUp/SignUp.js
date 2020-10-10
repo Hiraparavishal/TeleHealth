@@ -77,7 +77,7 @@ const SignUp = () => {
               cookies.set("uid", data.user.uid, { path: "/" });
               cookies.set("detalis", true, { path: "/" });
 
-              history.push("/form1");
+              history.push("/form");
             }
           })();
         })
