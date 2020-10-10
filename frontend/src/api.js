@@ -10,6 +10,11 @@ export async function patientProfile(uid) {
     uid: uid,
   });
 }
+export async function doctorAsPerMedication(medication) {
+  return await axios.post("/doctordetails", {
+    medication: medication,
+  });
+}
 export async function patientDetails(
   uid,
   fullname,

@@ -1,6 +1,5 @@
 import React from "react";
 import PatientNav from "./PatientNav";
-import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import "./style.css";
 import {
@@ -17,20 +16,19 @@ import { Card } from "react-bootstrap";
 import Background from "../images/O6RBXH0.jpg";
 import appoinment from "../images/appointment.png";
 import doctor1 from "../images/male-surgeon-wearing-uniform.png";
-import doctor2 from "../images/medical-stethoscope-variant.png";
 import lab from "../images/lab-microscope.png";
 import medical from "../images/supermarket.png";
 import general from "../images/cold_1477464743.webp";
 import dermatology from "../images/dermatology.jpg";
 import gynaecology from "../images/gynaecology.jpg";
 import orth from "../images/ortho.jpg";
-import pediatrics from "../images/pediatrics.jpg";
-import psychiatric from "../images/psychiatric.jpg";
 import sexology from "../images/sexology.jpg";
 import ent from "../images/ent.jpeg";
 import dentist from "../images/dentist.jpg";
+import { useHistory } from "react-router-dom";
 
 const Patienthome = () => {
+  const history = new useHistory();
   const variant = "Success";
   return (
     <>
@@ -339,8 +337,6 @@ const Patienthome = () => {
           </Card.Body>
         </Card>
         <Card
-          // bg={variant.toLowerCase()}
-          // text={variant.toLowerCase() === "light" ? "dark" : "white"}
           style={{
             width: "18rem",
             backgroundColor: "#57b846",
@@ -402,6 +398,9 @@ const Patienthome = () => {
           style={{
             marginLeft: "50px",
           }}
+          onClick={() => {
+            history.push("/doctor/generalphysician");
+          }}
         >
           <Card.Img
             style={{
@@ -429,6 +428,9 @@ const Patienthome = () => {
         <Card
           style={{
             marginLeft: "50px",
+          }}
+          onClick={() => {
+            history.push("/doctor/orthopedic");
           }}
         >
           <Card.Img
@@ -458,6 +460,9 @@ const Patienthome = () => {
           style={{
             marginLeft: "50px",
           }}
+          onClick={() => {
+            history.push("/doctor/gynaecologist");
+          }}
         >
           <Card.Img
             style={{
@@ -485,6 +490,9 @@ const Patienthome = () => {
         <Card
           style={{
             marginLeft: "50px",
+          }}
+          onClick={() => {
+            history.push("/doctor/sexologist");
           }}
         >
           <Card.Img
@@ -514,6 +522,9 @@ const Patienthome = () => {
           style={{
             marginLeft: "50px",
           }}
+          onClick={() => {
+            history.push("/doctor/ent");
+          }}
         >
           <Card.Img
             style={{
@@ -541,6 +552,9 @@ const Patienthome = () => {
         <Card
           style={{
             marginLeft: "50px",
+          }}
+          onClick={() => {
+            history.push("/doctor/dentist");
           }}
         >
           <Card.Img
