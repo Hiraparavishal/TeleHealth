@@ -71,13 +71,13 @@ const SignUp = () => {
           (async () => {
             if (type === "Doctor") {
               await doctorProfile(data.user.uid);
+              cookies.set("uid", data.user.uid, { path: "/" });
+              cookies.set("detalis", true, { path: "/" });
             }
             if (type === "Patient") {
               await patientProfile(data.user.uid);
               cookies.set("uid", data.user.uid, { path: "/" });
               cookies.set("detalis", true, { path: "/" });
-
-              history.push("/form1");
             }
           })();
         })
@@ -584,18 +584,6 @@ const SignUp = () => {
           size="small"
         />
         <TextField
-          label="Conform Password"
-          id="outlined-size-small"
-          variant="outlined"
-          type="password"
-          name="conformpassword"
-          value={conformPassword}
-          onChange={updateConformPassword}
-          fullWidth
-          margin="normal"
-          size="small"
-        />
-        <TextField
           label="Password"
           id="outlined-size-small"
           variant="outlined"
@@ -607,6 +595,19 @@ const SignUp = () => {
           margin="normal"
           size="small"
         />
+        <TextField
+          label="Conform Password"
+          id="outlined-size-small"
+          variant="outlined"
+          type="password"
+          name="conformpassword"
+          value={conformPassword}
+          onChange={updateConformPassword}
+          fullWidth
+          margin="normal"
+          size="small"
+        />
+
         <div
           style={{
             display: "flex",

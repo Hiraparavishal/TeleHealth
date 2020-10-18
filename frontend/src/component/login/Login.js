@@ -63,6 +63,8 @@ const Login = () => {
       .then(function (data) {
         console.log(data);
         if (type === "Doctor") {
+          cookies.set("uid", data.user.uid, { path: "/" });
+          history.push("/doctorhome");
         }
         if (type === "Patient") {
           cookies.set("uid", data.user.uid, { path: "/" });

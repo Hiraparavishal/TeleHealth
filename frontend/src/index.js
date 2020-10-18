@@ -14,6 +14,7 @@ import ent from "./component/Patients/FindDoctor/ENT";
 import gynaecologist from "./component/Patients/FindDoctor/Gynaecologist";
 import orthopedic from "./component/Patients/FindDoctor/Orthopedic";
 import sexologist from "./component/Patients/FindDoctor/Sexologist";
+import doctorehome from "./component/Doctor/DoctorHome";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "firebase";
@@ -45,6 +46,7 @@ ReactDOM.render(
       ></Route>
       <Route path="/doctor/orthopedic" exact component={orthopedic}></Route>
       <Route path="/doctor/sexologist" exact component={sexologist}></Route>
+      <Route path="/doctorhome" exact component={doctorehome}></Route>
     </Switch>
   </Router>,
   document.getElementById("root")
